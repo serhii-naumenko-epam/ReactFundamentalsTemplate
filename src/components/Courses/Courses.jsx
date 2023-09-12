@@ -1,4 +1,5 @@
 import React from 'react';
+import { CourseCard } from './components/CourseCard/CourseCard';
 
 import styles from './styles.module.css';
 
@@ -14,8 +15,9 @@ export const Courses = ({coursesList, authorsList, handleShowCourse}) => {
 			<div className={styles.panel}>
 				// reuse Button component for 'Add new course' button
 			</div>
+
+			{ coursesList.map((course, index)=> <CourseCard key={`course-${index}`} course={course} handleShowCourse={() => {console.log('handleShowCourse')}}></CourseCard>)}
 			
-			// use '.map' to render all courses. Use CourseCard component
 		</>
 	);
 };

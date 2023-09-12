@@ -6,6 +6,10 @@ export const CourseForm = ({authorsList, createCourse, createAuthor}) => {
 
 	//write your code here
 
+	const handleSubmit = () => {
+		console.log('handleSubmit');
+	}
+
 	return (
 		<form onSubmit={handleSubmit}>
 			<div>

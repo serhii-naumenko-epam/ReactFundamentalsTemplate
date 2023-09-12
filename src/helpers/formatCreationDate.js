@@ -1,6 +1,7 @@
 export const formatCreationDate = (date) => {
   
-  	// write your solution here
-
-  return date;
+  const parts = date.split('/');
+  if (parts.length !== 3) return null;
+  
+  return `${parts[1]}.${parts[0]}.${parts[2]}`;
 }

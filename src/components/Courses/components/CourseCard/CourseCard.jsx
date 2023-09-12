@@ -1,4 +1,8 @@
 import React from 'react';
+import { mockedAuthorsList } from '../../../../constants';
+import { Button } from '../../../../common';
+
+import styles from './styles.module.css';
 
 import { getCourseDuration, formatCreationDate } from '../../../../helpers';
 
@@ -9,27 +13,30 @@ export const CourseCard = ({course, handleShowCourse}) => {
 	return (
 		<div className={styles.cardContainer} data-testid='courseCard'>
 			<div className={styles.cardText}>
-				<h2>Title</h2>
-				<p>Description</p>
+				<h2>{course.title}</h2>
+				<p>{course.description}</p>
 			</div>
 			<div className={styles.cardDetails}>
 				<p>
 					<b>Authors: </b>
-					authors list
+					{course.authors.map(authorId => (<span>{mockedAuthorsList.find(author => authorId === author.id).name}</span>))}
 				</p>
 				<p>
 					<b>Duration:</b>
-					<span>duration</span>
+					<span>{getCourseDuration(course.duration)}</span>
 				</p>
 				<p>
 					<b>Created: </b>
-					<span>date</span>
+					<span>{formatCreationDate(course.creationDate)}</span>
 				</p>
 				<div>
+					<Button buttonText="Show course"></Button>
+					<Button data-testid="deleteCourse"></Button>
+					<Button button with data-testid="updateCourse"></Button>
 
-					// reuse Button component for 'Show course' button
+					{/* // reuse Button component for 'Show course' button
 					// reuse Button component for 'Delete' button with data-testid="deleteCourse"
-					// reuse Button component for 'Update' button with data-testid="updateCourse"
+					// reuse Button component for 'Update' button with data-testid="updateCourse" */}
 
 				</div>
 			</div>
