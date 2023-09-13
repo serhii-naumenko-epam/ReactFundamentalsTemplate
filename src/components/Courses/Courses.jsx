@@ -12,7 +12,7 @@ export const Courses = ({coursesList, authorsList, handleShowCourse}) => {
 	// for EmptyCourseListComponent container use data-testid="emptyContainer" attribute
 	// for button in EmptyCourseListComponent add data-testid="addCourse" attribute
 
-	if (coursesList.length) {
+	if (!coursesList.length) {
 		return <EmptyCourseListComponent data-testid="emptyContainer"/>
 	}
 
