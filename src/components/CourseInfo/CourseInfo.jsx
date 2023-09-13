@@ -15,7 +15,7 @@ export const CourseInfo = ({coursesList,authorsList,onBack,showCourseId}) => {
 
 			<h1>Course title</h1>
 			<div className={styles.courseInfo}>
-				<p className={styles.description}>{description}</p>
+				<p className={styles.description}></p>
 				<div>
 					<p>
 						<b>ID: </b>

@@ -5,6 +5,9 @@ import styles from './styles.module.css';
 export const Login = () => {
 	
 	// write your code here
+	const handleSubmit = () => {
+		console.log('handleSubmit')
+	}
 
 	return (
 		<div className={styles.container}>
