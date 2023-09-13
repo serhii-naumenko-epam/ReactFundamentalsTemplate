@@ -1,5 +1,7 @@
-import React from 'react';
+// import React from 'react';
+import { Button } from '../../common/Button/Button';
 import { CourseCard } from './components/CourseCard/CourseCard';
+import { EmptyCourseListComponent } from './components/EmptyCourseListComponent/EmptyCourseListComponent';
 
 import styles from './styles.module.css';
 
@@ -10,13 +12,23 @@ export const Courses = ({coursesList, authorsList, handleShowCourse}) => {
 	// for EmptyCourseListComponent container use data-testid="emptyContainer" attribute
 	// for button in EmptyCourseListComponent add data-testid="addCourse" attribute
 
+	if (coursesList.length) {
+		return <EmptyCourseListComponent data-testid="emptyContainer"/>
+	}
+
 	return (
 		<>
 			<div className={styles.panel}>
-				{/* // reuse Button component for 'Add new course' button */}
+				<Button buttonText="Add new course"></Button>
 			</div>
 
-			{ coursesList.map((course, index)=> <CourseCard key={`course-${index}`} course={course} handleShowCourse={() => {console.log('handleShowCourse')}}></CourseCard>)}
+			{ coursesList.map((course, index)=> 
+				<CourseCard
+					key={`course-${index}`}
+					course={course}
+					authorsList={authorsList}
+					handleShowCourse={handleShowCourse}
+				/>)}
 			
 		</>
 	);

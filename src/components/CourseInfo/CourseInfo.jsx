@@ -1,10 +1,12 @@
 // import React from 'react';
 
-// import { formatCreationDate, getCourseDuration } from '../../helpers';
+import { Button } from '../../common/Button/index';
 
-// import styles from './styles.module.css';
+import { formatCreationDate, getCourseDuration } from '../../helpers';
 
-export const CourseInfo = ({coursesList,authorsList,onBack,showCourseId}) => {
+import styles from './styles.module.css';
+
+export const CourseInfo = ({course, authorsList, onBack, showCourseId}) => {
 
 	// write your code here
 
@@ -13,30 +15,34 @@ export const CourseInfo = ({coursesList,authorsList,onBack,showCourseId}) => {
 			{/* // Module 1: reuse Button component for 'onBack' functionality 
 			// Module 2: use 'react-router-dom' 'Link' component for button 'Back' */}
 
-			<h1>Course title</h1>
-			{/* <div className={styles.courseInfo}>
-				<p className={styles.description}></p>
+			<h1>{course.title}</h1>
+			<div className={styles.courseInfo}>
+				<p className={styles.description}>{course.description}</p>
 				<div>
 					<p>
 						<b>ID: </b>
-						id
+						{course.id}
 					</p>
 					<p>
 						<b>Duration: </b>
-						duration
+						{getCourseDuration(course.duration)}
 					</p>
 					<p>
 						<b>Created: </b>
-						creation date
+						{formatCreationDate(course.creationDate)}
 					</p>
 					<div>
 						<b>Authors</b>
 						<ul className={styles.authorsList}>
-							//use '.map' to render authors list with 'li' tag
+							{course.authors.map((authorId, idnex) => (<li key={`author-${idnex}`}>{authorsList.find(author => authorId === author.id).name}</li>) )}
 						</ul>
 					</div>
 				</div>
-			</div> */}
+			</div>
+			<Button
+				buttonText='Back' 
+				handleClick={() => onBack(null)}
+			/>
 		</div>
 	);
 };

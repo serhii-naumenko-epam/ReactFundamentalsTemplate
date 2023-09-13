@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { mockedAuthorsList, mockedCoursesList } from './constants';
 import { Header } from './components/Header/Header'
-import { Courses } from './components';
-import { Button } from './common';
+import { CourseInfo, Courses } from './components';
 import styles from './App.module.css';
 
 // use mocked data till API implementation
@@ -11,6 +10,12 @@ import styles from './App.module.css';
 
 function App() {
 
+	const [courseToShow, setCourseToShow] = useState(null);
+
+	const handleShowCourse = (course = null) => {
+		setCourseToShow(course);
+	}
+
 	// write your code here
 
 	return (
@@ -18,13 +23,18 @@ function App() {
 
 			<Header></Header>
 			<div className={styles.container}>
-				<Button buttonText="Add new course"></Button>
-				<Courses
-					coursesList={mockedCoursesList}
-					authorsList={mockedAuthorsList}
-					handleShowCourse={ () => { console.log('handleShowCourse') } }>
+				{ courseToShow ? 
+					<CourseInfo 
+						course={courseToShow}
+						authorsList={mockedAuthorsList}
+						onBack={handleShowCourse}
+					/> : 
+					<Courses
+						coursesList={mockedCoursesList}
+						authorsList={mockedAuthorsList}
+						handleShowCourse={ handleShowCourse } />
+				}
 
-				</Courses>
 			</div>
 		</div>
 

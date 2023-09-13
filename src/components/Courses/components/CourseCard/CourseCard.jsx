@@ -1,5 +1,4 @@
-import React from 'react';
-import { mockedAuthorsList } from '../../../../constants';
+// import React from 'react';
 import { Button } from '../../../../common';
 
 import styles from './styles.module.css';
@@ -9,6 +8,11 @@ import { getCourseDuration, formatCreationDate } from '../../../../helpers';
 export const CourseCard = ({course, handleShowCourse, authorsList}) => {
 
 		// write your code here
+	const getCourseAuthors = () => {
+		const courseAuthors = course.authors.map(authorId => authorsList.find(author => authorId === author.id).name ).join(', ');
+
+		return courseAuthors;
+	}
 
 	return (
 		<div className={styles.cardContainer} data-testid='courseCard'>
@@ -19,10 +23,10 @@ export const CourseCard = ({course, handleShowCourse, authorsList}) => {
 			<div className={styles.cardDetails}>
 				<p>
 					<b>Authors: </b>
-					{course.authors.map(authorId => (<span>{mockedAuthorsList.find(author => authorId === author.id).name}</span>))}
+					{getCourseAuthors()}
 				</p>
 				<p>
-					<b>Duration:</b>
+					<b>Duration: </b>
 					<span>{getCourseDuration(course.duration)}</span>
 				</p>
 				<p>
@@ -30,7 +34,7 @@ export const CourseCard = ({course, handleShowCourse, authorsList}) => {
 					<span>{formatCreationDate(course.creationDate)}</span>
 				</p>
 				<div>
-					<Button buttonText="Show course"></Button>
+					<Button buttonText="Show course" handleClick={() => {handleShowCourse(course)}}></Button>
 					<Button data-testid="deleteCourse"></Button>
 					<Button button with data-testid="updateCourse"></Button>
 
