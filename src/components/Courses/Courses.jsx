@@ -13,7 +13,7 @@ export const Courses = ({coursesList, authorsList, handleShowCourse}) => {
 	return (
 		<>
 			<div className={styles.panel}>
-				// reuse Button component for 'Add new course' button
+				{/* // reuse Button component for 'Add new course' button */}
 			</div>
 
 			{ coursesList.map((course, index)=> <CourseCard key={`course-${index}`} course={course} handleShowCourse={() => {console.log('handleShowCourse')}}></CourseCard>)}
