@@ -34,7 +34,7 @@ export const CourseCard = ({course, handleShowCourse, authorsList}) => {
 					<span>{formatCreationDate(course.creationDate)}</span>
 				</p>
 				<div>
-					<Button buttonText="Show course" handleClick={() => {handleShowCourse(course)}}></Button>
+					<Button buttonText="Show course" handleClick={() => {handleShowCourse(course.id)}}></Button>
 					<Button data-testid="deleteCourse"></Button>
 					<Button button with data-testid="updateCourse"></Button>
 

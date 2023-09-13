@@ -1,14 +1,16 @@
 // import React from 'react';
 
+import { useState } from 'react';
 import { Button } from '../../common/Button/index';
 
 import { formatCreationDate, getCourseDuration } from '../../helpers';
 
 import styles from './styles.module.css';
 
-export const CourseInfo = ({course, authorsList, onBack, showCourseId}) => {
+export const CourseInfo = ({coursesList, authorsList, onBack, showCourseId}) => {
 
 	// write your code here
+	const [course] = useState(coursesList.find(({id}) => showCourseId === id));
 
 	return (
 		<div data-testid='courseInfo'>

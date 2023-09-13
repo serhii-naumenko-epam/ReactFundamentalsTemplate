@@ -10,10 +10,10 @@ import styles from './App.module.css';
 
 function App() {
 
-	const [courseToShow, setCourseToShow] = useState(null);
+	const [courseIdToShow, setCourseIdToShow] = useState(null);
 
-	const handleShowCourse = (course = null) => {
-		setCourseToShow(course);
+	const handleShowCourse = (courseId = null) => {
+		setCourseIdToShow(courseId);
 	}
 
 	// write your code here
@@ -23,11 +23,12 @@ function App() {
 
 			<Header></Header>
 			<div className={styles.container}>
-				{ courseToShow ? 
+				{ courseIdToShow ? 
 					<CourseInfo 
-						course={courseToShow}
+						coursesList={mockedCoursesList}
 						authorsList={mockedAuthorsList}
 						onBack={handleShowCourse}
+						showCourseId={courseIdToShow}
 					/> : 
 					<Courses
 						coursesList={mockedCoursesList}
