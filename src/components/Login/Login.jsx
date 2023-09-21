@@ -1,27 +1,53 @@
-// import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
+import {
+	Link
+} from "react-router-dom";
+import { Button, Input } from '../../common';
 
-// import styles from './styles.module.css';
+import styles from './styles.module.css';
+import { login } from '../../services';
 
-// export const Login = () => {
+export const Login = () => {
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const navigate = useNavigate();
 	
-// 	// write your code here
+	// write your code here
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-// 	return (
-// 		<div className={styles.container}>
-// 			<form onSubmit={handleSubmit}>
-// 				<h1>Login</h1>
+    await login({
+      email,
+      password
+    })
 
-// 				// reurse Input component for email field
+    const token = localStorage.getItem('token');
 
-// 				// reurse Input component for password field
+    if (token) {
+      navigate('/courses');
+    }
 
-// 				// reurse Button component for 'Login' button
+    console.log(email, password)
+  }
 
-// 			</form>
-// 			<p>
-// 				If you don't have an account you can&nbsp;
-// 				<a>register</a>
-// 			</p>
-// 		</div>
-// 	);
-// };
+	return (
+		<div className={styles.container}>
+			<form onSubmit={handleSubmit}>
+				<h1>Login</h1>
+
+        <Input placeholderText="Input text" type="text" labelText="Email" onChange={ (e) => { setEmail(e.target.value) }}></Input>
+        <Input placeholderText="Input text" type="password" labelText="Password" onChange={ (e) => { setPassword(e.target.value) }}></Input>
+
+        <Button buttonText="Login" handleClick={() => {}}></Button>
+
+			</form>
+			<p>
+				If you don't have an account you can&nbsp;
+				<Link to="/registration">register</Link>
+			</p>
+		</div>
+	);
+};

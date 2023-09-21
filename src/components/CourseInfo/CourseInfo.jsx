@@ -1,16 +1,18 @@
 // import React from 'react';
 
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { Button } from '../../common/Button/index';
 
 import { formatCreationDate, getCourseDuration } from '../../helpers';
 
 import styles from './styles.module.css';
 
-export const CourseInfo = ({coursesList, authorsList, onBack, showCourseId}) => {
+export const CourseInfo = ({coursesList, authorsList, onBack}) => {
 
 	// write your code here
-	const [course] = useState(coursesList.find(({id}) => showCourseId === id));
+	let { courseId } = useParams(); 
+	let [ course ] = useState(coursesList.find(({id}) => courseId === id));
 
 	return (
 		<div data-testid='courseInfo'>

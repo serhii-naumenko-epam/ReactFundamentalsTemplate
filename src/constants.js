@@ -41,3 +41,5 @@ export const mockedAuthorsList = [
     name: 'Valentina Larina'
   },
 ]
+
+export const api = 'http://localhost:4000'

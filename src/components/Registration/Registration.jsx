@@ -1,27 +1,52 @@
-// import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import {
+	Link
+} from "react-router-dom";
+import { Button, Input } from '../../common';
+import { createUser } from '../../services';
 
-// import styles from './styles.module.css';
+import styles from './styles.module.css';
 
-// export const Registration = () => {
+export const Registration = () => {
+
+	const [name, setName] = useState('');
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
+
+	const navigate = useNavigate()
 	
-// 	// write your code here
+	// write your code here
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-// 	return (
-// 		<div className={styles.container}>
-// 			<form onSubmit={handleSubmit}>
-// 				<h1>Registration</h1>
-// 				// reurse Input component for email field
+		const createUserResult = await createUser({
+			name,
+			email,
+			password
+		});
 
-// 				// reurse Input component for name field
+		console.log('successful', createUserResult)
 
-// 				// reurse Input component for password field
+		if (createUserResult.successful) {
+			navigate('/')
+		}
+	}
 
-// 				// reurse Button component for 'Login' button
-// 			</form>
-// 			<p>
-// 				If you have an account you can&nbsp;
-// 				<a>log in</a>
-// 			</p>
-// 		</div>
-// 	);
-// };
+	return (
+		<div className={styles.container}>
+			<form onSubmit={handleSubmit}>
+				<h1>Registration</h1>
+
+        <Input placeholderText="Input text" type="text" labelText="Name" onChange={(e) => { setName(e.target.value) }}></Input>
+        <Input placeholderText="Input text" type="text" labelText="Email" onChange={(e) => { setEmail(e.target.value) }}></Input>
+        <Input placeholderText="Input text" type="password" labelText="Password" onChange={(e) => { setPassword(e.target.value) }}></Input>
+        <Button buttonText="Login" handleClick={() => {}}></Button>
+			</form>
+			<p>
+				If you have an account you can&nbsp;
+				<Link to="/login">log in</Link>
+			</p>
+		</div>
+	);
+};

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '../../common/Button';
 import { Logo } from '../../components/Header/components/Logo';
 
@@ -7,6 +8,18 @@ import styles from './styles.module.css';
 export const Header = () => {
 	
 	// write your cose here
+	const navigate = useNavigate();
+
+	const userName = localStorage.getItem('userName');
+
+	const logout = () => {
+		localStorage.clear();
+		navigate('/')
+	}
+
+	const login = () => {
+		navigate('/login')
+	}
 
 	return (
 		<div className={styles.headerContainer}>
@@ -14,8 +27,13 @@ export const Header = () => {
 			<Logo />
 
 			<div className={styles.userContainer}>
-				<p className={styles.userName}>Boris</p>
-				<Button buttonText={'Login'} handleClick={()=>{console.log('Login Button click')}}></Button>
+				{ userName ? <>
+						<p className={styles.userName}>{userName}</p>
+						<Button buttonText={'Logout'} handleClick={logout}></Button>
+					</> : <>
+						<Button buttonText={'Login'} handleClick={login}></Button>
+					</>
+				}
 			</div>
 		</div>
 	);
