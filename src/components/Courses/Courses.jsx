@@ -1,4 +1,5 @@
 // import React from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '../../common/Button/Button';
 import { CourseCard } from './components/CourseCard/CourseCard';
 import { EmptyCourseListComponent } from './components/EmptyCourseListComponent/EmptyCourseListComponent';
@@ -19,7 +20,7 @@ export const Courses = ({coursesList, authorsList, handleShowCourse}) => {
 	return (
 		<>
 			<div className={styles.panel}>
-				<Button buttonText="Add new course"></Button>
+				<Link to='/courses/add'><Button buttonText="Add new course"></Button></Link>
 			</div>
 
 			{ coursesList.map((course, index)=> 

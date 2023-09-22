@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import { mockedAuthorsList, mockedCoursesList } from './constants';
 import { Header } from './components/Header/Header'
-import { Courses, CourseInfo, Registration, Login } from './components';
+import { Courses, CourseInfo, Registration, Login, CourseForm } from './components';
 import styles from './App.module.css';
 import { useEffect } from "react";
 
@@ -34,6 +34,14 @@ function App() {
 				coursesList={mockedCoursesList}
 				authorsList={mockedAuthorsList}
 				handleShowCourse={ handleShowCourse }
+			/>
+		}>
+		</Route>
+		<Route path="/courses/add" exac element={
+			<CourseForm
+				authorsList={mockedAuthorsList}
+				createCourse={() => {}}
+				createAuthor={() => {}}
 			/>
 		}>
 		</Route>

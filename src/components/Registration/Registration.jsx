@@ -41,11 +41,11 @@ export const Registration = () => {
         <Input placeholderText="Input text" type="text" labelText="Name" onChange={(e) => { setName(e.target.value) }}></Input>
         <Input placeholderText="Input text" type="text" labelText="Email" onChange={(e) => { setEmail(e.target.value) }}></Input>
         <Input placeholderText="Input text" type="password" labelText="Password" onChange={(e) => { setPassword(e.target.value) }}></Input>
-        <Button buttonText="Login" handleClick={() => {}}></Button>
+        <Button buttonText="Registration" handleClick={() => {}}></Button>
 			</form>
 			<p>
 				If you have an account you can&nbsp;
-				<Link to="/login">log in</Link>
+				<Link to="/login">login</Link>
 			</p>
 		</div>
 	);

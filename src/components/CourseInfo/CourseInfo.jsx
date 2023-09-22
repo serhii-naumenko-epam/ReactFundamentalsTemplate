@@ -1,7 +1,7 @@
 // import React from 'react';
 
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { Button } from '../../common/Button/index';
 
 import { formatCreationDate, getCourseDuration } from '../../helpers';
@@ -43,10 +43,10 @@ export const CourseInfo = ({coursesList, authorsList, onBack}) => {
 					</div>
 				</div>
 			</div>
-			<Button
+			<Link to='/courses'><Button
 				buttonText='Back' 
-				handleClick={() => onBack(null)}
-			/>
+				handleClick={() => {}}
+			/></Link>
 		</div>
 	);
 };

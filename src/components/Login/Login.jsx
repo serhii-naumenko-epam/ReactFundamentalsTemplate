@@ -46,7 +46,7 @@ export const Login = () => {
 			</form>
 			<p>
 				If you don't have an account you can&nbsp;
-				<Link to="/registration">register</Link>
+				<Link to="/registration">registration</Link>
 			</p>
 		</div>
 	);
